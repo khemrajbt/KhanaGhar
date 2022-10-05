@@ -1,31 +1,27 @@
+/* COPYRIGHT © 2022 KHEM RAJ BUDHATHOKI */
 /* GOOGLE FONTS  */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
 
 /* CSS VARIABLES */
 :root {
-  --title-color: #fff;
-  --text-color: hsl(235, 20%, 57%);
+  --white-color: rgb(255, 255, 255);
+  --text-color: rgb(114, 119, 171);
   --body-gradient: linear-gradient(
     344deg,
     rgba(124, 43, 215, 1) 0%,
     rgb(189, 77, 241) 100%
   );
-  --container-color: hsl(235, 32%, 10%);
-
-  /* FONT AND TYPOGRAPHY */
-  --body-font: "Poppins", sans-serif;
-  --biggest-font-size: 3.4rem;
-  --normal-font-size: 1.8rem;
+  --card-bg: rgb(16, 18, 39);
+  --primary-heading: 3.4rem;
+  --normal-heading: 1.8rem;
 }
 
+/* CSS RESET */
 * {
   margin: 0;
   padding: 0;
   font-family: "Poppins", monospace;
   box-sizing: border-box;
-}
-
-html {
   font-size: 62.5%;
 }
 
@@ -33,10 +29,9 @@ img {
   max-width: 100%;
 }
 
-.cards {
-  /* height: 100vh; */
+/* MAIN BEGIN */
+.card-container {
   display: grid;
-  /* grid-template-columns: repeat(3, 330px); */
   grid-template-columns: repeat(1fr);
   gap: 3rem;
   align-items: center;
@@ -44,73 +39,64 @@ img {
   background: var(--body-gradient);
 }
 
-.card__img {
+.card {
+  background-color: var(--card-bg);
+  border-radius: 4rem;
+  padding: 4rem 4rem;
+  box-shadow: 0px 20px 24px rgba(31, 26, 50, 0.2);
+}
+
+.img-box {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.card__icon {
+.card-img {
   width: 200px;
   margin-bottom: 1rem;
-  animation: float-icon 2.5s ease-in-out infinite;
+  animation: dancing-img 2.5s ease-in-out infinite;
 }
 
-/* Animation img */
-@keyframes float-icon {
+/* IMG ANIMATION */
+@keyframes dancing-img {
   0% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-0.75rem);
+    transform: translateY(-0.8rem);
   }
   100% {
     transform: translateY(0);
   }
 }
 
-.card__item {
-  background-color: var(--container-color);
-  border-radius: 4rem;
-  padding: 4rem 3rem;
-  box-shadow: 0px 20px 24px hsla(253, 32%, 15%, 0.2);
-}
-
-.card__info {
+/* CARD HEADING */
+.card-info {
   text-align: center;
 }
 
-.card__title {
+.card-title {
   margin-top: 2rem;
-  color: var(--title-color);
-  font-size: var(--biggest-font-size);
+  color: var(--white-color);
+  font-size: var(--primary-heading);
 }
 
-.card-description {
+.card-para {
   margin-top: 0.5rem;
   color: var(--text-color);
-  font-size: var(--normal-font-size);
+  font-size: var(--normal-heading);
 }
 
-.card__btn {
-  font-size: 1.6rem;
-  display: inline-block;
-  margin-top: 3rem;
-  color: #fff;
-  background-color: tomato;
-  padding: 1rem 1.8rem;
-  border-radius: 10rem;
-  text-decoration: none;
-  transition: all 0.5s;
-}
-
-.product__info {
+/* PRODUCT INFO */
+.product-info {
+  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
 }
-.product__price {
+
+.card-price {
   font-size: 1.6rem;
   display: inline-block;
   margin-top: 3rem;
@@ -122,92 +108,121 @@ img {
   text-transform: uppercase;
 }
 
-.card__btn:hover {
-  box-shadow: 0 0 0 8px rgba(255, 99, 71, 0.404);
+/* BUTTON */
+.card-btn {
+  font-size: 1.6rem;
+  display: inline-block;
+  margin-top: 3rem;
+  color: #fff;
+  background-color: tomato;
+  padding: 1rem 1.8rem;
+  border-radius: 10rem;
+  text-decoration: none;
+  transition: all 0.5s;
 }
 
+.card-btn:hover {
+  background-color: transparent;
+  box-shadow: 0 0 0 1px tomato;
+}
+/* MAIN END */
+
+/* BREAK POINT */
 @media screen and (min-width: 240px) {
-  .cards {
-    padding: 5rem 0 2rem 0;
-  }
-  .card__item {
-    /* padding: 4rem 1rem; */
-    border-radius: 3rem;
+  .card-container {
+    padding: 5rem 1rem;
   }
 
-  .card__title {
+  .card-img {
+    width: 120px;
+  }
+
+  .card-title {
     font-size: 2.2rem;
   }
 
-  .card-description {
-    font-size: 1.6rem;
+  .card-para {
+    font-size: 1.4rem;
   }
 
-  .product__price,
-  .card__btn {
-    padding: 1rem 1.4rem;
+  .card-price,
+  .card-btn {
     font-size: 1rem;
   }
-
-  .card__icon {
-    width: 100px;
-  }
 }
-
-/* For medium devices */
-@media screen and (min-width: 440px) {
-  .cards {
-    padding: 5rem 0 2rem 0;
-  }
-  .card__item {
-    border-radius: 4rem;
+@media screen and (min-width: 320px) {
+  .card-container {
+    padding: 5rem 2rem;
   }
 
-  .card__title {
+  .card-title {
     font-size: 3.4rem;
   }
 
-  .card-description {
-    font-size: 1.8rem;
-  }
-
-  .product__price,
-  .card__btn {
-    padding: 1rem 1.8rem;
+  .card-price,
+  .card-btn {
     font-size: 1.6rem;
   }
 
-  .card__icon {
+  .card-img {
+    width: 180px;
+  }
+}
+
+/* FOR MEDIUM DEVICES */
+@media screen and (min-width: 440px) {
+  .card-container {
+    padding: 5rem 0 2rem 0;
+  }
+  .card {
+    border-radius: 4rem;
+  }
+
+  .card-title {
+    font-size: 3.4rem;
+  }
+
+  .card-para {
+    font-size: 1.8rem;
+  }
+
+  .card-price,
+  .card-btn {
+    font-size: 1.6rem;
+  }
+
+  .card-img {
     width: 180px;
     margin-bottom: 1rem;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .cards {
+  .card-container {
     grid-template-columns: repeat(2, 328px);
   }
 }
 
-/* For large devices */
+/* FOR LARGE DEVICES */
 @media screen and (min-width: 1100px) {
-  .cards {
+  .card-container {
     height: 100vh;
     grid-template-columns: repeat(3, 328px);
   }
 
-  .card__item {
-    padding: 4rem 3rem;
-    border-radius: 4rem;
+  .card {
+    padding: 4rem 4rem;
+    border-radius: 4.5 rem;
   }
 
-  .product__price,
-  .card__btn {
-    padding: 1rem 1.8rem;
+  .card-price,
+  .card-btn {
+    padding: 1.2rem 1.8rem;
     font-size: 1.6rem;
+    margin-top: 3rem;
   }
 
-  .card__icon {
+  .card-img {
     width: 200px;
   }
 }
